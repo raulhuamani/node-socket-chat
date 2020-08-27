@@ -1,23 +1,28 @@
-## Seccion 14: Sockets - Fundamentos de los Sockets
+## Seccion 16: Sockets - Chat
 
 ## Temas de la sección: 
 
 Aquí cubriremos varios temas como: 
 
--   Introducción a los sockets
--   Resolver preguntas comunes sobre los sockets
--   Instalación de Socket.io
--   Detectar conexiones y desconexiones de usuarios
--   Emitir mensajes cliente servidor / servidor cliente
--   Escuchar los mensajes servidor cliente / cliente servidor
--   Broadcast
--   Callbacks en los sockets
--   Pruebas en Heroku
+-   Comunicación entre usuarios
+-   Comunicación entre 1 a muchos
+-   Comunicación 1 a 1
+-   Comunicación entre salas de chat
+-   Diseño del chat
+-   Diseño del login
+-   Notificaciones de entrada de usuarios y salida de usuarios
 
-Este es un pequeño servidor de express listo para ejecutarse y servir la carpeta public en la web.
+El objetivo es crear una aplicación de chat completa
 
 Recuerden que deben de reconstruir los módulos de node con el comando
 
 ```
 npm install
+```
+
+Para ejecutar la aplicacion:
+
+```
+npm start
+npm run dev
 ```

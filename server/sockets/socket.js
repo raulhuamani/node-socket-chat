@@ -14,7 +14,7 @@ io.on('connection', (client) => {
                 mensaje: 'El nombre/sala es necesario'
             });
         }
-        console.log('Llego=> client.on: ' + JSON.stringify(data));
+        // console.log('Llego=> client.on: ' + JSON.stringify(data));
         client.join(data.sala);
 
         usuarios.agregarPersona(client.id, data.nombre, data.sala);
@@ -25,14 +25,14 @@ io.on('connection', (client) => {
 
     });
 
-    client.on('crearMensaje', (data) => {
+    client.on('crearMensaje', (data, callback) => {
 
         let persona = usuarios.getPersona(client.id);
-        console.log('Llego=> ' + JSON.stringify(data));
-        let mensaje = crearMensaje(persona.nombre, data.mensaje);
-        client.broadcast.to(data.sala).emit('crearMensaje', mensaje);
 
-        //callback(mensaje);
+        let mensaje = crearMensaje(persona.nombre, data.mensaje);
+        client.broadcast.to(persona.sala).emit('crearMensaje', mensaje);
+
+        callback(mensaje);
     });
 
 
@@ -52,8 +52,6 @@ io.on('connection', (client) => {
         let persona = usuarios.getPersona(client.id);
 
         client.broadcast.to(data.para).emit('mensajePrivado', crearMensaje(persona.nombre, data.mensaje));
-
-
     });
 
 });
